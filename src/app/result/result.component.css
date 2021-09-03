@@ -18,7 +18,7 @@ p {
 
 #chart {
   max-width: 380px;
-  margin: 35px auto;
+  margin: 30px auto;
   padding: 0;
 }
 
@@ -29,3 +29,4 @@ p {
   justify-content: center;
   height: 500px !important;
   }
+  
