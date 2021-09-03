@@ -1,0 +1,83 @@
+<div style="height: 100vh">
+  <div class="container-fluid h-100">
+    <div class="row h-100">
+      <div class="col-md-12 col-lg-8 col-12 h-100">
+        <h4 style="font-size: 25px; color: #13A538;" class="m-3">Home loan</h4>
+        <hr>
+        <form action="" class=form-inline>
+            <div class="form-group row m-5">
+                <label for="colFormLabel" class="col-sm-8 col-form-label">Home loan amount</label>
+
+                <div class="input-group col-sm-4 w-25">
+                  <span class="input-group-text" id="addon-wrapping" style="font-family: DejaVu Sans;">&#x20b9;</span>
+                  <input type="text" class="form-control" placeholder="Choose amount" aria-label="Choose amount">
+                </div>
+                <div class="custom-slider">
+                    <ngx-slider [(value)]="value"  [options]="options" ></ngx-slider>
+                </div>
+              </div>
+              <div class="form-group row m-5">
+                <label for="colFormLabel" class="col-sm-8 col-form-label">Interest Rate </label>
+                <div class="input-group col-sm-4 w-25">
+                  <span class="input-group-text" id="addon-wrapping" style="font-family: DejaVu Sans;">%</span>
+                  <input type="text" class="form-control" placeholder="Choose rate" aria-label="Choose rate">
+                </div>
+                <div class="custom-slider">
+                    <ngx-slider [(value)]="value2"  [options]="options2" ></ngx-slider>
+                </div>
+              </div>
+              <div class="form-group row m-5">
+                <label for="colFormLabel" class="col-sm-8 col-form-label">Loan tenure</label>
+                <div class="input-group col-sm-4 w-25">
+                  <span class="input-group-text" id="addon-wrapping" style="font-family: DejaVu Sans;">Yr</span>
+                  <input type="text" class="form-control" placeholder="Choose tenure" aria-label="Choose tenure">
+                </div>
+                <div class="custom-slider">
+                    <ngx-slider [(value)]="value3"  [options]="options3" ></ngx-slider>
+                </div>
+                
+              </div>
+       
+    </form>
+    
+      </div>
+      <div class="col-md-12 col-lg-4  col-12 overview h-100">
+        <div class="row h-100">
+          <div class="box col-sm-10 col-md-10 col-10 my-auto mx-auto mx-auto rounded">
+            <div>
+              <h4 class="ff m-2">overview</h4>
+              <hr>
+            </div>
+            <div>
+              <ul>
+                <li class="m-5">
+                  <div class="ff">Home loan
+                    <span style="margin-left:75px; font-family: DejaVu Sans;" class="text-black"> &#x20b9;900000</span>
+                  </div>
+                  
+                </li>
+                <li class="m-5">
+                  <div class="ff">Interest Rate
+                    <span style="margin-left:75px;" class="text-black"> %5 </span>
+                  </div>
+                  
+                </li>
+                <li class="m-5">
+                  <div class="ff">Loan tenure
+                      <span style="margin-left:75px; " class="text-black">5 Years</span>
+                  </div>
+                </li>
+              </ul>
+
+              <div>
+                <button class="rounded-pill ms-auto button text-white" disabled=true>
+                    Calculate->
+                  </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
