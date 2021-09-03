@@ -5,11 +5,10 @@
         <h4 style="font-size: 25px; color: #13a538" class="m-3">Home loan</h4>
         <hr />
         <form action="" class="form-inline" [formGroup]='form'>
-          <div class="form-group row m-5 ">
+          <div class="form-group row m-3 m-md-5 ">
             <label for="colFormLabel" class="col-sm-8 col-form-label"
               >Home loan amount</label
-            >
-
+              >
             <div class="input-group col-sm-4 w-25">
               <span
                 class="input-group-text"
@@ -31,7 +30,7 @@
               <ngx-slider [(value)]="value" [options]="options"(mouseup)="getamount()"></ngx-slider>
             </div>
           </div>
-          <div class="form-group row m-5 ">
+          <div class="form-group row m-3 m-md-5  ">
             <label for="colFormLabel" class="col-sm-8 col-form-label"
               >Interest Rate
             </label>
@@ -56,7 +55,7 @@
               <ngx-slider [(value)]="value2" [options]="options2" (mouseup)="getinterest()"></ngx-slider>
             </div>
           </div>
-          <div class="form-group row m-5">
+          <div class="form-group row m-3 m-md-5 ">
             <label for="colFormLabel" class="col-sm-8 col-form-label"
               >Loan tenure</label
             >
@@ -84,7 +83,7 @@
       </div>
       <div class="col-md-12 col-lg-4 col-12 overview h-100">
         <div class="row m-3">
-          <select name="" id="" class="rounded w-50 select" aria-label="language">
+          <select name="" id="" class="rounded w-50 select form-select text-white" aria-label="language">
             <option value="" disabled selected>Language:</option>
             <option value="">EN</option>
             <option value="rr">ML</option>
@@ -107,20 +106,20 @@
             <div>
               <ul>
                 <li class="m-5">
-                  <div class="ff">
+                  <div class="ff ">
                     Home loan
                     <span
-                      style="margin-left: 75px; font-family: DejaVu Sans"
-                      class="text-black"
-                    >
-                      &#x20b9;{{ this.form.value.amount}}</span
+                      style=" font-family: DejaVu Sans"
+                      class="text-black  ms-3 ms-md-2 ms-lg-3">
+                      &#x20b9;{{ this.form.value.amount}}
+                      </span
                     >
                   </div>
                 </li>
                 <li class="m-5">
                   <div class="ff">
                     Interest Rate
-                    <span style="margin-left: 75px" class="text-black">
+                    <span class="text-black ms-3 ms-md-2 ms-lg-3">
                       %{{this.form.value.interest}}
                     </span>
                   </div>
@@ -128,7 +127,7 @@
                 <li class="m-5">
                   <div class="ff">
                     Loan tenure
-                    <span style="margin-left: 75px" class="text-black"
+                    <span  class="text-black ms-5 ms-md-2 ms-lg-3"
                       >{{this.form.value.year}} Year</span
                     >
                   </div>
