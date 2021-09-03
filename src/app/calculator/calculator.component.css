@@ -52,5 +52,9 @@ ul {
 ::ng-deep .custom-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
     background: #13a538;
 }
-
+.select{
+  background-color:#13a538;
+  color: white;
+  cursor: pointer;
+}
   

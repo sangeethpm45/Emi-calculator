@@ -10,11 +10,12 @@ import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsToolt
 
 export class ResultComponent implements OnInit   {
 
-
+public emi:number=0
+public interest :number=0
+public totel:number=0
+public piearray=[]
   constructor() {
-    monkeyPatchChartJsTooltip();
-
-    monkeyPatchChartJsLegend();
+    
   }
 
   public pieChartOptions: ChartOptions = {
@@ -33,7 +34,7 @@ export class ResultComponent implements OnInit   {
 
   };
   
-  public pieChartData: SingleDataSet = [30000, 50000,];
+  public pieChartData: SingleDataSet =[3000,5000];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
@@ -43,6 +44,29 @@ export class ResultComponent implements OnInit   {
     }];
     public labels=['Principle loan amount','Totel interest']
   ngOnInit(): void {
+
+    this.getvalues()
+    monkeyPatchChartJsTooltip();
+
+    monkeyPatchChartJsLegend();
   }
+getvalues(){
+let amount=parseInt(localStorage.getItem('amount')||'')
+let year =parseFloat(localStorage.getItem('year')||'')
+let interest= parseFloat(localStorage.getItem('interest')||'')
+let interestmonth=(interest/12/100)
+let x=Math.pow((1+(interestmonth)),12*year)
+let y=(Math.pow((1+(interestmonth)),12*year)-1)
+let emi=Math.round((amount*interestmonth)*(x/y))
+let totel_sum=Math.round (emi*(12*year))
+let totel_int=(totel_sum-amount)
+let Principlesum=totel_sum-totel_int
+this.emi=emi
+this.interest=totel_int
+this.totel=totel_sum
+this.pieChartData=[amount,this.interest]
+console.log(this.piearray);
+
+}
 
 } 

@@ -1,45 +1,98 @@
 import { Component, OnInit } from '@angular/core';
-import { Options } from "@angular-slider/ngx-slider";
+import { Options } from '@angular-slider/ngx-slider';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
-  styleUrls: ['./calculator.component.css']
+  styleUrls: ['./calculator.component.css'],
 })
 export class CalculatorComponent implements OnInit {
   value: number = 0;
-  value2:number=0;
-  value3:number=0
+  value2: number = 0;
+  value3: number = 0;
+  value4:number=0
   options: Options = {
-    step:25,
-    ceil:200,
-    showTicks: true,
+    floor:0,
+    ceil: 200,
+    ticksArray:[0,25,50,75,100,125,150,175,200],
+    showTicks:true,
     showTicksValues:true,
     animateOnMove:true,
-    hideLimitLabels:true,
+    step:.1
+  
   };
 
   options2: Options = {
-    step:2.5,
+    floor: 5,
     ceil:20,
+    ticksArray:[5,7.5,10,12.5,15,17.5,20],
     showTicks: true,
-    showTicksValues:true,
+    showTicksValues: true,
+    tickStep:.5,
+    step:.5,
     animateOnMove:true,
-    hideLimitLabels:true,
   };
 
   options3: Options = {
-    step:5,
-    ceil:30,
+    ceil: 30,
+    ticksArray:[0,5,10,15,20,25,30],
     showTicks: true,
-    showTicksValues:true,
-    animateOnMove:true,
-    hideLimitLabels:true,
+    showTicksValues: true,
+    animateOnMove: true,
+    hideLimitLabels: true,
   };
-
-  constructor() { }
-
-  ngOnInit(): void {
+  form = this.fb.group({
+    amount: [50000, [Validators.required]],
+    interest: [5, [Validators.required]],
+    year: [1, [Validators.required]],
+  });
+  submit(){
+      localStorage.setItem('amount',this.form.value.amount)
+      localStorage.setItem('year',this.form.value.year)
+      localStorage.setItem('interest',this.form.value.interest)
+      this.router.navigateByUrl('result')    
+  }
+  setamount(){
+    let amnt=this.form.value.amount
+    if(amnt<100000){
+    this.value=amnt/amnt
+    //this.form.value.amount=this.value
+    }
+    this.value=amnt/100000
+    //this.form.value.amount=this.value
+    console.log(this.value);
   }
 
+  getamount(){
+    this.form.value.amount=Math.floor(this.value*100000)
+    this.value4=Math.floor(this.value*100000)
+  }
+
+
+  setinterest(){
+    let intrst=this.form.value.interest    
+    this.value2=intrst
+  }
+  getinterest(){
+    this.form.value.interest=this.value2
+  }
+
+  setyear(){
+    let year=this.form.value.year
+    this.value3=year
+  }
+  getyear(){
+    this.form.value.year=this.value3
+
+  }
+  constructor(public fb: FormBuilder,private router:Router) {}
+
+  ngOnInit(): void {}
 }

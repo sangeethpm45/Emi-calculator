@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { ResultComponent } from './result/result.component';
 import { ChartsModule } from 'ng2-charts';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,9 @@ import { ChartsModule } from 'ng2-charts';
     BrowserModule,
     AppRoutingModule,
     NgxSliderModule,
-    ChartsModule
+    ChartsModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

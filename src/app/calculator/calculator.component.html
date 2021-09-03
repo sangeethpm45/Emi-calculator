@@ -2,77 +2,147 @@
   <div class="container-fluid h-100">
     <div class="row h-100">
       <div class="col-md-12 col-lg-8 col-12 h-100">
-        <h4 style="font-size: 25px; color: #13A538;" class="m-3">Home loan</h4>
-        <hr>
-        <form action="" class=form-inline>
-            <div class="form-group row m-5">
-                <label for="colFormLabel" class="col-sm-8 col-form-label">Home loan amount</label>
+        <h4 style="font-size: 25px; color: #13a538" class="m-3">Home loan</h4>
+        <hr />
+        <form action="" class="form-inline" [formGroup]='form'>
+          <div class="form-group row m-5 ">
+            <label for="colFormLabel" class="col-sm-8 col-form-label"
+              >Home loan amount</label
+            >
 
-                <div class="input-group col-sm-4 w-25">
-                  <span class="input-group-text" id="addon-wrapping" style="font-family: DejaVu Sans;">&#x20b9;</span>
-                  <input type="text" class="form-control" placeholder="Choose amount" aria-label="Choose amount">
-                </div>
-                <div class="custom-slider">
-                    <ngx-slider [(value)]="value"  [options]="options" ></ngx-slider>
-                </div>
-              </div>
-              <div class="form-group row m-5">
-                <label for="colFormLabel" class="col-sm-8 col-form-label">Interest Rate </label>
-                <div class="input-group col-sm-4 w-25">
-                  <span class="input-group-text" id="addon-wrapping" style="font-family: DejaVu Sans;">%</span>
-                  <input type="text" class="form-control" placeholder="Choose rate" aria-label="Choose rate">
-                </div>
-                <div class="custom-slider">
-                    <ngx-slider [(value)]="value2"  [options]="options2" ></ngx-slider>
-                </div>
-              </div>
-              <div class="form-group row m-5">
-                <label for="colFormLabel" class="col-sm-8 col-form-label">Loan tenure</label>
-                <div class="input-group col-sm-4 w-25">
-                  <span class="input-group-text" id="addon-wrapping" style="font-family: DejaVu Sans;">Yr</span>
-                  <input type="text" class="form-control" placeholder="Choose tenure" aria-label="Choose tenure">
-                </div>
-                <div class="custom-slider">
-                    <ngx-slider [(value)]="value3"  [options]="options3" ></ngx-slider>
-                </div>
-                
-              </div>
-       
-    </form>
-    
+            <div class="input-group col-sm-4 w-25">
+              <span
+                class="input-group-text"
+                id="addon-wrapping"
+                style="font-family: DejaVu Sans"
+                >&#x20b9;</span
+              >
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Choose amount"
+                aria-label="Choose amount"
+                formControlName='amount'
+                (change)='setamount()'
+                [value]=value4
+              />
+            </div>
+            <div class="custom-slider">
+              <ngx-slider [(value)]="value" [options]="options"(mouseup)="getamount()"></ngx-slider>
+            </div>
+          </div>
+          <div class="form-group row m-5 ">
+            <label for="colFormLabel" class="col-sm-8 col-form-label"
+              >Interest Rate
+            </label>
+            <div class="input-group col-sm-4 w-25">
+              <span
+                class="input-group-text"
+                id="addon-wrapping"
+                style="font-family: DejaVu Sans"
+                >%</span
+              >
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Choose rate"
+                aria-label="Choose rate"
+                formControlName='interest'
+                (change)=setinterest()
+                [value]="value2"
+              />
+            </div>
+            <div class="custom-slider">
+              <ngx-slider [(value)]="value2" [options]="options2" (mouseup)="getinterest()"></ngx-slider>
+            </div>
+          </div>
+          <div class="form-group row m-5">
+            <label for="colFormLabel" class="col-sm-8 col-form-label"
+              >Loan tenure</label
+            >
+            <div class="input-group col-sm-4 w-25">
+              <span
+                class="input-group-text"
+                id="addon-wrapping"
+                style="font-family: DejaVu Sans"
+                >Yr</span
+              >
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Choose tenure"
+                aria-label="Choose tenure"
+                formControlName='year'
+                [value]='value3'
+              />
+            </div>
+            <div class="custom-slider">
+              <ngx-slider [(value)]="value3" [options]="options3" (mouseup)='getyear()'></ngx-slider>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="col-md-12 col-lg-4  col-12 overview h-100">
+      <div class="col-md-12 col-lg-4 col-12 overview h-100">
+        <div class="row m-3">
+          <select name="" id="" class="rounded w-50 select" aria-label="language">
+            <option value="" disabled selected>Language:</option>
+            <option value="">EN</option>
+            <option value="rr">ML</option>
+          </select>
+        </div>
         <div class="row h-100">
-          <div class="box col-sm-10 col-md-10 col-10 my-auto mx-auto mx-auto rounded">
+          <div
+            class="
+              box
+              col-sm-10 col-md-10 col-10
+              my-auto
+              mx-auto 
+              rounded
+            "
+          >
             <div>
               <h4 class="ff m-2">overview</h4>
-              <hr>
+              <hr />
             </div>
             <div>
               <ul>
                 <li class="m-5">
-                  <div class="ff">Home loan
-                    <span style="margin-left:75px; font-family: DejaVu Sans;" class="text-black"> &#x20b9;900000</span>
+                  <div class="ff">
+                    Home loan
+                    <span
+                      style="margin-left: 75px; font-family: DejaVu Sans"
+                      class="text-black"
+                    >
+                      &#x20b9;{{ this.form.value.amount}}</span
+                    >
                   </div>
-                  
                 </li>
                 <li class="m-5">
-                  <div class="ff">Interest Rate
-                    <span style="margin-left:75px;" class="text-black"> %5 </span>
+                  <div class="ff">
+                    Interest Rate
+                    <span style="margin-left: 75px" class="text-black">
+                      %{{this.form.value.interest}}
+                    </span>
                   </div>
-                  
                 </li>
                 <li class="m-5">
-                  <div class="ff">Loan tenure
-                      <span style="margin-left:75px; " class="text-black">5 Years</span>
+                  <div class="ff">
+                    Loan tenure
+                    <span style="margin-left: 75px" class="text-black"
+                      >{{this.form.value.year}} Year</span
+                    >
                   </div>
                 </li>
               </ul>
 
               <div>
-                <button class="rounded-pill ms-auto button text-white" disabled=true>
-                    Calculate->
-                  </button>
+                <button
+                  class="rounded-pill ms-auto button text-white"
+                  (click)="submit()"
+                  
+                >
+                  Calculate->
+                </button>
               </div>
             </div>
           </div>
