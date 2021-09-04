@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
 import {
   FormBuilder,
-  FormControl,
-  FormGroup,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -30,9 +28,9 @@ export class CalculatorComponent implements OnInit {
   };
 
   options2: Options = {
-    floor: 5,
+    floor: 0,
     ceil:20,
-    ticksArray:[5,7.5,10,12.5,15,17.5,20],
+    ticksArray:[0,2.5,5,7.5,10,12.5,15,17.5,20],
     showTicks: true,
     showTicksValues: true,
     tickStep:.5,
@@ -49,14 +47,16 @@ export class CalculatorComponent implements OnInit {
     hideLimitLabels: true,
   };
   form = this.fb.group({
-    amount: [50000, [Validators.required]],
-    interest: [5, [Validators.required]],
-    year: [1, [Validators.required]],
+    amount: [50000, [Validators.required,Validators.min(50000)]],
+    interest: [1,[Validators.required, Validators.min(1)]],
+    year: [2, [ Validators.required,Validators.min(1)]],
   });
   submit(){
       localStorage.setItem('amount',this.form.value.amount)
       localStorage.setItem('year',this.form.value.year)
       localStorage.setItem('interest',this.form.value.interest)
+      console.log(this.form.value);
+      
       this.router.navigateByUrl('result')    
   }
   setamount(){
@@ -67,11 +67,12 @@ export class CalculatorComponent implements OnInit {
     }
     this.value=amnt/100000
     //this.form.value.amount=this.value
-    console.log(this.value);
+    //console.log(this.value);
   }
 
   getamount(){
-    this.form.value.amount=Math.floor(this.value*100000)
+    this.form.patchValue({amount:Math.floor(this.value*100000)})
+    
     this.value4=Math.floor(this.value*100000)
   }
 
@@ -79,9 +80,12 @@ export class CalculatorComponent implements OnInit {
   setinterest(){
     let intrst=this.form.value.interest    
     this.value2=intrst
+    
   }
   getinterest(){
-    this.form.value.interest=this.value2
+    
+    this.form.patchValue({interest:this.value2})
+    
   }
 
   setyear(){
@@ -89,8 +93,7 @@ export class CalculatorComponent implements OnInit {
     this.value3=year
   }
   getyear(){
-    this.form.value.year=this.value3
-
+    this.form.patchValue({year:this.value3})
   }
   constructor(public fb: FormBuilder,private router:Router) {}
 
