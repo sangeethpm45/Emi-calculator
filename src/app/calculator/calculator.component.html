@@ -2,10 +2,10 @@
   <div class="container-fluid h-100">
     <div class="row h-100">
       <div class="col-md-12 col-lg-8 col-12 h-100">
-        <h4 style="font-size: 25px; color: #13a538" class="m-3">Home loan</h4>
-        <hr />
+        <h4 style="font-size: 25px; color: #13a538" class="m-2 m-md-3 line">Home loan</h4>
+        
         <form action="" class="form-inline" [formGroup]='form'>
-          <div class="form-group row m-3 m-md-5 ">
+          <div class="form-group row m-0 m-md-5 p-md-3">
             <label for="colFormLabel" class="col-sm-8 col-form-label"
               >Home loan amount</label
               >
@@ -32,7 +32,7 @@
               <ngx-slider [(value)]="value" [options]="options"(mouseup)="getamount()"></ngx-slider>
             </div>
           </div>
-          <div class="form-group row m-3 m-md-5  ">
+          <div class="form-group row m-0 m-md-5 p-md-3 ">
             <label for="colFormLabel" class="col-sm-8 col-form-label"
               >Interest Rate
             </label>
@@ -59,11 +59,11 @@
               <ngx-slider [(value)]="value2" [options]="options2" (mouseup)="getinterest()"></ngx-slider>
             </div>
           </div>
-          <div class="form-group row m-3 m-md-5 ">
-            <label for="colFormLabel" class="col-sm-8 col-form-label"
+          <div class="form-group row m-0 m-md-5 p-md-3">
+            <label for="colFormLabel" class=" col-sm-8 col-form-label"
               >Loan tenure</label
             >
-            <div class="input-group col-sm-4 w-25">
+            <div class="input-group   col-sm-4 w-25">
               <span
                 class="input-group-text"
                 id="addon-wrapping"
@@ -95,63 +95,51 @@
             <option value="rr">ML</option>
           </select>
         </div>
-        <div class="m-3 h-100">
-          <div
-            class="
-              box
-              col-sm-10 col-md-10 col-10
-              my-auto
-              mx-auto 
-              rounded
-            "
+        <div class="m-3 mt-5 h-100 ">
+          <div class="card bg-light  box ms-4 " style="max-width: 25rem;">
+            <div class="card-body rounded">
+              <h5 class="card-title">overview</h5>
+              <hr/>
+                 <div>
+                  <ul>
+                    <li class="m-4">
+                      <div class="ff ">
+                        Home loan
+                        <span
+                          style=" font-family: DejaVu Sans"
+                          class="text-black  ms-0 ms-md-2 ms-lg-3">
+                          &#x20b9;{{ this.form.value.amount}}
+                          </span
+                        >
+                      </div>
+                    </li>
+                    <li class="m-4">
+                      <div class="ff">
+                        Interest Rate
+                        <span class="text-black ms-1 ms-md-2 ms-lg-3">
+                          %{{this.form.value.interest}}
+                        </span>
+                        
+                      </div>
+                    </li>
+                    <li class="m-4">
+                      <div class="ff">
+                        Loan tenure
+                        <span  class="text-black ms-1  ms-md-2 ms-lg-3"
+                          >{{this.form.value.year}} Year</span
+                        >
+                      </div>
+                    </li>
+                  </ul>
+                 
+            </div>
+            <button
+            class="rounded-pill ms-5 mt-0 button text-white border-0"
+            (click)="submit()"
+            [disabled]='!this.form.valid'
           >
-            <div>
-              <h4 class="ff m-2">overview</h4>
-              <hr />
-            </div>
-            <div>
-              <ul>
-                <li class="m-5">
-                  <div class="ff ">
-                    Home loan
-                    <span
-                      style=" font-family: DejaVu Sans"
-                      class="text-black  ms-3 ms-md-2 ms-lg-3">
-                      &#x20b9;{{ this.form.value.amount}}
-                      </span
-                    >
-                  </div>
-                </li>
-                <li class="m-5">
-                  <div class="ff">
-                    Interest Rate
-                    <span class="text-black ms-3 ms-md-2 ms-lg-3">
-                      %{{this.form.value.interest}}
-                    </span>
-                    
-                  </div>
-                </li>
-                <li class="m-5">
-                  <div class="ff">
-                    Loan tenure
-                    <span  class="text-black ms-5  ms-md-2 ms-lg-3"
-                      >{{this.form.value.year}} Year</span
-                    >
-                  </div>
-                </li>
-              </ul>
-
-              <div>
-                <button
-                  class="rounded-pill ms-auto button text-white"
-                  (click)="submit()"
-                  [disabled]='!this.form.valid'
-                >
-                  Calculate->
-                </button>
-              </div>
-            </div>
-          </div>
+            Calculate->
+          </button>
         </div>
       </div>
     </div>

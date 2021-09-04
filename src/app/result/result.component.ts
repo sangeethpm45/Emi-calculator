@@ -1,4 +1,5 @@
 import { Component, OnInit,ViewChild,Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ChartType, ChartOptions } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
 
@@ -14,7 +15,7 @@ public emi:number=0
 public interest :number=0
 public totel:number=0
 public piearray=[]
-  constructor() {
+  constructor(private router:Router) {
     
   }
 
@@ -27,7 +28,8 @@ public piearray=[]
         usePointStyle:true,
         padding:25,
         fontStyle:"bold",
-        fontColor:"#7F7E96"
+        fontColor:"#7F7E96",
+        
       },
     }
     
@@ -68,5 +70,7 @@ this.pieChartData=[amount,this.interest]
 console.log(this.piearray);
 
 }
-
+Goback(){
+  this.router.navigateByUrl('')
+}
 } 
